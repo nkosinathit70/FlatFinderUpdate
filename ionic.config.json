@@ -1,0 +1,7 @@
+{
+  "name": "FlatP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

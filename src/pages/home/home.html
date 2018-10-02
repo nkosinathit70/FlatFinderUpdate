@@ -1,0 +1,42 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+</ion-header>
+
+
+<ion-content class="content">
+    <ion-slides pager>
+ 
+        <ion-slide style="background-color: #2b2b2b">
+          <img src="../../assets/imgs/apartment.jpg">
+            
+          <h2>Looking for a flat?</h2>
+          <p style="color: white">Find the ideal flat of your choice from our wide range of flats available. <br>
+          All this can be done with just a few clicks!</p>
+          <div class="div1">
+          <button ion-button outline style= "border: none; color: white" (click) = "getStarted()">Skip</button>
+          <button ion-button outline style= "border: none; color: white"(click)="next()">Next</button>
+          </div>
+        </ion-slide>
+      
+        <ion-slide style="background-color: #2b2b2b">
+          <img src="../../assets/imgs/Flat.jpg"> 
+          <h2>Own a flat?</h2>
+          <p style="color:white">Well you've arrived at the right place! <br>
+          With this app you can advertise rooms that you would like to rent out</p>
+         
+          <div class="div1">
+          <button ion-button outline style= "color: white" (click) = "getStarted()">Get Started</button>
+        </div>
+        </ion-slide>
+      
+      </ion-slides>
+
+
+</ion-content>

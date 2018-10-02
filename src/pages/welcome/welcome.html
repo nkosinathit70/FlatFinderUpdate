@@ -1,0 +1,90 @@
+<!--
+  Generated template for the WelcomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+ 
+</ion-header>
+
+<ion-content class="content">
+
+   
+    <ion-menu type="overlay"  [content]="mycontent">
+        <ion-content>
+          <ion-list>
+              <ion-item>
+                  <button ion-button clear   icon only  style = "color:aqua " (click)="closeMenu()">
+                      <ion-icon ios="ios-menu" md="md-menu" class="btn" ></ion-icon></button>
+              </ion-item>
+              <ion-item>
+                  <button ion-button clear   (click) ="ve()">
+                   
+                  <ion-icon ios="ios-contact" md="md-contact"></ion-icon></button>
+                  </ion-item>
+            
+               <ion-item>
+                <button ion-button clear    style = "color: aqua" (click) = "addFlat()" >Add Flat   <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+                </button>
+                </ion-item>
+                <ion-item>
+                <button ion-button  clear    style = "color: #69F0AE " (click) ="showCheckbox()">View my flats <ion-icon ios="ios-eye" md="md-eye"></ion-icon> </button>
+              </ion-item>
+              
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+      
+    
+      
+      
+      <ion-nav #mycontent [root]="rootPage"></ion-nav>
+      <div class="ps"></div>
+    <div >
+      
+      <button *ngIf="chocolate" ion-button clear   icon only  style = "color:aqua " (click)="openMenu()">
+        
+        <ion-icon ios="ios-menu" md="md-menu" class="btn" ></ion-icon></button>
+        <button *ngIf= "loginBtn" ion-button clear color = button    style = "color: aqua" (click) = "logins()" >Log in</button>
+        <button *ngIf="signupBtn" ion-button  clear    style = "color: #69F0AE " (click) ="showCheckbox()">Sign Up</button>
+       <button ion-button clear   (click) ="ve()">
+         
+          <ion-icon ios="ios-power" md="md-power"></ion-icon>
+                {{fname}}
+             </button></div>
+
+        <div>
+            <ion-refresher (ionRefresh)="doRefresh($event)">
+                <ion-refresher-content></ion-refresher-content>
+              </ion-refresher>
+        </div>
+
+        <ion-list>
+      
+        <ion-item class="list" *ngFor = "let flat of flatList" (click)="getFlatDetails(flat)">
+          <ion-thumbnail item-start>
+              <img src="{{flat?.downloadUrl}}" height="100" width="100"/>
+          </ion-thumbnail>
+          <h2>{{flat?.fname}}</h2>
+          <h3>{{flat?.Price}}</h3>
+          <p>{{flat?.Address}}</p>
+         
+     
+          <button ion-button clear item-end (click)="getFlatDetails(flat)">View</button>
+        </ion-item>
+      </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+      <ion-col>
+    <!--<button ion-button  clear    style = "color: #69F0AE " (click) ="showCheckbox()" *ngIf="chocolate">add flat  <ion-icon style ="color:beige" ios="ios-add" md="md-add" item-end></ion-icon></button>-->
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+</ion-footer>

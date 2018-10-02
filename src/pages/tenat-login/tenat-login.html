@@ -1,0 +1,38 @@
+<ion-content>
+    <form  [formGroup]="users" (ngSignUp)="login(login)">
+  
+<div class="form-error">{{loginError}}</div>
+            <ion-card >
+                <ion-card-header>Login As a Tenant 
+            </ion-card-header>
+      
+            <ion-card-content >
+                  <ion-list no-line>
+                    
+                    <ion-item >
+                        <ion-input formControlName="email" type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
+                  </ion-item>
+      
+                  <ion-item *ngIf="users.controls.email.invalid && users.controls.email.dirty">
+                      <p>Please enter valid email address</p>
+                  </ion-item>
+                
+                      <ion-item>
+                          <ion-input formControlName="password" [(ngModel)]="password" type="password" placeholder="Password"></ion-input>
+                      </ion-item>
+                    
+                      <ion-item *ngIf="users.controls.password.invalid && users.controls.password.dirty">
+                          <p>Your password is too short</p>
+                      </ion-item>
+      
+                      <button ion-button round outline color="primary" (click)="login()" >Login</button>
+                      <button ion-button round outline color="primary" (click)="reset()" >Reset</button>
+                      
+      
+                  </ion-list>
+                </ion-card-content>
+            
+              </ion-card>
+      </form>
+        
+        </ion-content>
