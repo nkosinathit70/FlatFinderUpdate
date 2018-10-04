@@ -18,7 +18,7 @@ export class TenatLoginPage {
   password:string;
   login: FormGroup;
   userId;
-
+  role;
   constructor(private fb:FormBuilder,public navCtrl: NavController, public navParams: NavParams) {
     this.login = this.fb.group({
      
@@ -36,15 +36,17 @@ export class TenatLoginPage {
   logins(){
     firebase.auth().signInWithEmailAndPassword(this.email,this.password).then(user => {
      // console.log('sign up page');
-this.userId = user.user.uid;
-firebase.database().ref('/user?/'+this.userId).set({
+    this.userId = user.user.uid;
+    this.role = "Tenant";
+   firebase.database().ref('/Tenants_TBL/'+this.userId).set({
 
-  userID:this.userId,
-  role: "Tenant"
+     userID:this.userId,
+
+      role: this.role
     
 
 })
-   this.navCtrl.setRoot("WelcomePage",{userId:this.userId,openMenu:0});  
+   this.navCtrl.setRoot("WelcomePage",{userId:this.userId,role:this.role});  
     }).key
     
     

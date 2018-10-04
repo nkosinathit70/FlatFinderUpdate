@@ -29,6 +29,7 @@ export class FlatDetailsPage {
   Time;
   landID;
   card = 0;
+  hideButn;
   bookingList = TANENTS;
 
   bookingInfo :Person = {
@@ -43,7 +44,7 @@ export class FlatDetailsPage {
     landID:""
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-   
+    this.hideButn =1;
       //this.count =0;
        firebase.database().ref('/bookingInfo/').on('value', (snapshot) =>
      {
@@ -54,13 +55,13 @@ export class FlatDetailsPage {
        
        // firebase.database().ref('/Flats/').push({landID:this.landID,contactNo:this.contactNo,fname:this.fname,downloadUrl: this.fire.downloadUrl,flatname:this.flatName, description:this.description,Address:this.Address, Price: this.Price});
           this.bookingInfo.tenantID = snap.val().tenantID;
-          this.bookingInfo.fname = snap.va().fname;
-          this.bookingInfo.lname = snap.va().lname;
-          this.bookingInfo.contactNo = snap.va().contactNo;
-          this.bookingInfo.email=snap.va().email;
-          this.bookingInfo.date=snap.va().date;
-          this.bookingInfo.time=snap.va().time;
-          this.bookingInfo.landID= snap.va().landID;
+          this.bookingInfo.fname = snap.val().fname;
+          this.bookingInfo.lname = snap.val().lname;
+          this.bookingInfo.contactNo = snap.val().contactNo;
+          this.bookingInfo.email=snap.val().email;
+          this.bookingInfo.date=snap.val().date;
+          this.bookingInfo.time=snap.val().time;
+          this.bookingInfo.landID= snap.val().landID;
         
           this.bookingList.push(this.bookingInfo);
  
@@ -72,7 +73,7 @@ export class FlatDetailsPage {
     this.flat = this.navParams.get('flat');
     console.log(this.navParams.get('flat'));
     this.userId = this.navParams.get("userId");
-    console.log(" booker  =",this.flat.landID);
+    console.log(" booker  =",this.landID);
     console.log(" tenanent  =",this.userId);
 
 
@@ -80,7 +81,9 @@ export class FlatDetailsPage {
   checkStatus(){
 
      if(this.userId){
+
       this.card = 1;
+      this.hideButn = 0;
      }
      else{
     this.navCtrl.push("ClientPage");

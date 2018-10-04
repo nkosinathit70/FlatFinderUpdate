@@ -18,7 +18,7 @@ declare var firebase;
 export class WelcomePage {
   loginBtn = 1;
   signupBtn = 1;
-  chocolate = 0;
+  chocolate ;
   display = 0;
   email:string;
   password:string;
@@ -36,23 +36,25 @@ export class WelcomePage {
   constructor(public menuCtrl: MenuController,public loadingCtrl: LoadingController,private alertCtrl:AlertController,public navCtrl: NavController, public navParams: NavParams) {
   
   this.userId = this.navParams.get("userId");
-
-  if( this.userId){
-    this.chocolate = this.navParams.get("openMenu");
-    this.contactNo = this.navParams.get("contactNo");
-    this.fname = this.navParams.get("fname");
-    this.userDetails = this.navParams.get("lname");
-    this.landID = this.navParams.get("landID");
+  this.role = this.navParams.get("role");
+  if(this.userId){
+    
     this.loginBtn = 0;
     this.signupBtn = 0;
-    console.log("Contact :",this.contactNo);
-console.log("fname :",this.fname);
+ 
   console.log("userId ======",this.userId);
+  console.log("role:",this.role);
   console.log("chocoloate",this.chocolate);   
-    console.log("user details ===="+this.fname);
+  
 
   }
 
+if(this.role === "Tenants")
+{
+  this.chocolate = 0;
+}else if(this.role === "landlord"){
+  
+}
 
   //console.log(this.navParams.get("user"));
     this.getImage();
@@ -99,12 +101,14 @@ console.log("fname :",this.fname);
     alert.addButton({
  
       text: 'I am looking for a Flat',
+      
  
       handler: data => {
         this.testRadioOpen = false;
         this.testRadioResult = data;
       //console.log( this.testRadioResult.value);
-        this.navCtrl.setRoot("ClientPage");
+      this.role = "Tenant";
+        this.navCtrl.setRoot("LoginPage",{role:this.role});
       
       }});
     //alert.addButton('Cancel');
@@ -118,6 +122,47 @@ console.log("fname :",this.fname);
     });*/
     alert.present();
  }
+ showCheckboxLogin() {
+  let alert = this.alertCtrl.create();
+  alert.setMessage('Please choose one  ');
+  alert.setTitle('What are you looking for? ');
+
+
+
+  alert.addButton({
+
+    text: 'I am looking for Tenants',
+
+    handler: data => {
+      this.testRadioOpen = false;
+      this.testRadioResult = data;
+      this.role = "landlord"
+      this.navCtrl.setRoot("LoginPage",{role:this.role});
+     //this.landLordsignup()
+    }});
+
+  alert.addButton({
+
+    text: 'I am looking for a Flat',
+
+    handler: data => {
+      this.testRadioOpen = false;
+      this.testRadioResult = data;
+    //console.log( this.testRadioResult.value);
+      this.navCtrl.setRoot("LoginPage",{role:"landlord"});
+    
+    }});
+  //alert.addButton('Cancel');
+/*  alert.addButton({
+    text: 'OK',
+    handler: data => {
+      this.testRadioOpen = false;
+      this.testRadioResult = data;
+      this.navCtrl.setRoot("SignupPage");
+    }
+  });*/
+  alert.present();
+}
   Admin(){
 
    

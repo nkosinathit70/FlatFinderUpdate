@@ -28,7 +28,7 @@ export class SignupPage {
   password;
   contactNo;
   userId;
-  Bookings = [];
+
 
  
   landlord={
@@ -75,11 +75,11 @@ export class SignupPage {
         contactNo:this.contactNo,
         role:"landlord",
 
-        Bookings:{}
+       
 
       }
     )
-    this.navCtrl.setRoot("WelcomePage",{userId:this.userId,openMenu:1,contactNo:this.contactNo,fname:this.fname});
+    this.navCtrl.setRoot("WelcomePage",{userId:this.userId,role:"landlord"});
     }).key
 
     

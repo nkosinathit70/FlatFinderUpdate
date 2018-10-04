@@ -3,14 +3,18 @@ ion-content {
       .btn{
         height: 40px;
       }  
-        background-color: black!important;
+           background-color: black!important;  
+
         
     
     .list{
         background-color: black!important;    
+        p{
+            color: aqua;
+        }
     }
 
-   h3,h2{
+   h3,h2,p{
            color: aqua;
    }
 .ps{
@@ -25,3 +29,38 @@ ion-content {
 
     background-color: black!important;  
 }}
+
+///@at-root
+
+.card-background-page {
+
+    ion-card {
+      position: relative;
+      text-align: center;
+      
+      margin-block-end: 5%;
+      background-color:black; 
+    }
+    img {
+        border-radius: 5%;
+        
+    }
+    .card-title {
+      position: absolute;
+      top: 36%;
+      font-size: 2.0em;
+      width: 100%;
+      font-weight: bold;
+      color:rgb(135, 197, 222);
+
+    }
+  
+    .card-subtitle {
+      font-size: 1.0em;
+      position: absolute;
+      top: 52%;
+      width: 100%;
+      color: #fff;
+    }
+  
+  }

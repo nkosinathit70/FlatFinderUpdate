@@ -9,7 +9,7 @@
  
 </ion-header>
 
-<ion-content class="content">
+<!--<ion-content class="content">
 
    
     <ion-menu type="overlay"  [content]="mycontent">
@@ -43,11 +43,13 @@
       <ion-nav #mycontent [root]="rootPage"></ion-nav>
       <div class="ps"></div>
     <div >
-      
+    </ion-content>--> 
+    <ion-content class="card-background-page">
+      <div>
       <button *ngIf="chocolate" ion-button clear   icon only  style = "color:aqua " (click)="openMenu()">
         
         <ion-icon ios="ios-menu" md="md-menu" class="btn" ></ion-icon></button>
-        <button *ngIf= "loginBtn" ion-button clear color = button    style = "color: aqua" (click) = "logins()" >Log in</button>
+        <button *ngIf= "loginBtn" ion-button clear color = button    style = "color: aqua" (click) = "showCheckboxLogin()" >Log in</button>
         <button *ngIf="signupBtn" ion-button  clear    style = "color: #69F0AE " (click) ="showCheckbox()">Sign Up</button>
        <button ion-button clear   (click) ="ve()">
          
@@ -63,17 +65,21 @@
 
         <ion-list>
       
-        <ion-item class="list" *ngFor = "let flat of flatList" (click)="getFlatDetails(flat)">
-          <ion-thumbnail item-start>
-              <img src="{{flat?.downloadUrl}}" height="100" width="100"/>
-          </ion-thumbnail>
-          <h2>{{flat?.fname}}</h2>
-          <h3>{{flat?.Price}}</h3>
-          <p>{{flat?.Address}}</p>
+        
+          
+            <ion-card  *ngFor = "let flat of flatList" (click)="getFlatDetails(flat)">
+       
+           
          
-     
-          <button ion-button clear item-end (click)="getFlatDetails(flat)">View</button>
-        </ion-item>
+              <img src="{{flat?.downloadUrl}}" />
+           
+          
+          <div class="card-title">{{flat?.flatname}}</div>
+          <div class="card-subtitle">{{flat?.Price}}</div>
+
+          
+        </ion-card>
+    
       </ion-list>
 </ion-content>
 <ion-footer>

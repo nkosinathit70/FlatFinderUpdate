@@ -26,14 +26,26 @@ export class ClientPage {
   user;
   contactNo;
   password;
-   userDetails = {
-    fname:"", 
-    lname:"",
-    contactNo:""
-   };
+   role:string="";
   // gender;
   // age;
+  TenantList = {
+    ContactNo:"",
+    fname:"",
+    lname:"",
+    role:"",
+    userID:""
+  };
+
+  LandLordList = {
+    ContactNo:"",
+  fname:"",
+  lname:"",
+  role:"",
+  userId:""
+  }
   
+  ids;
 
   constructor(private f:FormBuilder,public navCtrl: NavController, public navParams: NavParams) {
     this.client = this.f.group({
@@ -66,39 +78,68 @@ export class ClientPage {
 
      firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then(user => {
      //this.display = 1;
-     this.useId= user.uid;
-          this.userDetails.fname = user.this.fname;
-          this.userDetails.lname = user.this.lname;
-          this.userDetails.contactNo = user.this.contactNo;
+     this.useId= user.user.uid;
+     this.role ="Tenant";
           
-          firebase.database().ref('/Tenants_TBL/'+user.uid).push(
+          firebase.database().ref('/Tenants_TBL/'+ user.user.uid).set(
             {
               userID:this.useId,
-              details:this.userDetails,
-              role: "Tenant"
+              ContactNo:this.contactNo,
+              fname:this.fname,
+              lname:this.lname,
+              email:this.email,
+              password:this.password,
+              role: this.role
               
             }
             ).key;
-          this.navCtrl.setRoot("WelcomePage",{userId:this.useId,openMenu:0,fname: user.this.fname,lname:this.lname,contactNo:this.contactNo});
+          this.navCtrl.setRoot("WelcomePage",{userId:this.useId,role:this.role});
           
     });
    }
    loginWithGoogle(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(User =>{
-      //this.navCtrl.push("WelcomePage");
-      this.useId=  User.user.uid;
-      console.log("userrrr",this.useId)
       
-     firebase.database().ref('/Tenants_TBL/'+this.useId).set(
-       {
-         userID:this.useId,
-         details:this.userDetails,
-         role: "Tenant"
-       }
-     ).key;
-      this.navCtrl.setRoot("WelcomePage",{userId:this.useId,openMenu:0 ,userDetails:this.userDetails});
+      this.ids = User.user.uid;
+      console.log("sssssssss",this.ids);
+       
+  
+    firebase.database().ref('/Clients_TBL/').on('value', (snapshot) =>
+    {
+       
+      
+      snapshot.forEach((snap) => 
+      { 
+        //Initializing Item;
+        /*this.item._key = snap.key;
+        this.item.name = snap.val().c_itemName;*/
+        //Adding Item to itemsList
+     
+        
+       this.TenantList.ContactNo = snap.val().contactNo;
+       this.TenantList.fname = snap.val().fname;
+       this.TenantList.lname =snap.val().lname;
+       this.TenantList.role = snap.val().role;
+       this.TenantList.userID = snap.val().userID;
+       // firebase.database().ref('/Flats/').push({landID:this.landID,contactNo:this.contactNo,fname:this.fname,downloadUrl: this.fire.downloadUrl,flatname:this.flatName, description:this.description,Address:this.Address, Price: this.Price});
+       if(this.ids === this.TenantList.userID){
+        console.log("the user is a Tenant",this.TenantList.userID);
+       this.navCtrl.push("WelcomePage",{userId:this.ids,role:  this.TenantList.role});
+     }
+      
+     
+        return false;
+      });
+      
+     
     });
+ 
+  
+      //this.navCtrl.push("WelcomePage",{userId:this.ids,openMenu:1});
+    })
+   }
+
   }
 
-}
+

@@ -20,7 +20,7 @@
           <ion-item>
             <ion-row>
               <ion-col>
-                  {{flat?.fname}}
+                  {{flat?.flatname}}
               </ion-col>
               <ion-col>{{flat?.description}}</ion-col>
               <ion-col>{{flat?.Address}}</ion-col>
@@ -29,7 +29,7 @@
               
           </ion-row></ion-item>
           </ion-list>
-          <button ion-button  round outline color style = "color: #69F0AE " (click)="checkStatus()" full>book</button>
+          <button *ngIf="hideButn" ion-button  round outline color style = "color: #69F0AE " (click)="checkStatus()" full>book</button>
           <ion-card *ngIf="card">
             <ion-card-content>
           <ion-list>
