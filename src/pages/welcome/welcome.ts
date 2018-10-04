@@ -94,7 +94,8 @@ if(this.role === "Tenants")
       handler: data => {
         this.testRadioOpen = false;
         this.testRadioResult = data;
-        this.navCtrl.setRoot("SignupPage");
+        this.role = "Landlord";
+        this.navCtrl.setRoot("SignupPage", {role: this.role});
        //this.landLordsignup()
       }});
  
@@ -107,8 +108,8 @@ if(this.role === "Tenants")
         this.testRadioOpen = false;
         this.testRadioResult = data;
       //console.log( this.testRadioResult.value);
-      this.role = "Tenant";
-        this.navCtrl.setRoot("LoginPage",{role:this.role});
+      this.role = "Client";
+        this.navCtrl.setRoot("SignupPage",{role:this.role});
       
       }});
     //alert.addButton('Cancel');
@@ -125,31 +126,31 @@ if(this.role === "Tenants")
  showCheckboxLogin() {
   let alert = this.alertCtrl.create();
   alert.setMessage('Please choose one  ');
-  alert.setTitle('What are you looking for? ');
+  alert.setTitle('Log in as A? ');
 
 
 
   alert.addButton({
 
-    text: 'I am looking for Tenants',
+    text: 'Landlord?',
 
     handler: data => {
       this.testRadioOpen = false;
       this.testRadioResult = data;
-      this.role = "landlord"
+      this.role = "Landlord"
       this.navCtrl.setRoot("LoginPage",{role:this.role});
      //this.landLordsignup()
     }});
 
   alert.addButton({
 
-    text: 'I am looking for a Flat',
+    text: 'Looker?',
 
     handler: data => {
       this.testRadioOpen = false;
       this.testRadioResult = data;
     //console.log( this.testRadioResult.value);
-      this.navCtrl.setRoot("LoginPage",{role:"landlord"});
+      this.navCtrl.setRoot("LoginPage",{role:"Client"});
     
     }});
   //alert.addButton('Cancel');

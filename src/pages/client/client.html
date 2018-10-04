@@ -11,104 +11,34 @@
 </ion-header>
 
 
-<ion-content class="content">
+<ion-content class="content" style="background-color: #2b2b2b;">
 
-    <form *ngIf="client" [formGroup]="client" (ngClient)="login()">
-        <div *ngIf ="display == 0">
-          <ion-card>
-            <ion-card-header>Sign Up client
-            </ion-card-header>
-            <ion-card-content>
-              <ion-list no-line>
-      
-                <ion-item >
-                  <ion-input formControlName="fname" [(ngModel)]="fname" type="text" placeholder="First Name"></ion-input>
-                </ion-item>
-      
-                <ion-item *ngIf="client.controls.fname.invalid && client.controls.fname.dirty">
-                    <p>Please enter valid name</p>
-                </ion-item>
-      
-                <ion-item>
-                    <ion-input formControlName="lname" [(ngModel)]="lname" type="text" placeholder="Last Name"></ion-input>
-                </ion-item>
-      
-                <ion-item *ngIf="client.controls.lname.invalid && client.controls.lname.dirty">
-                    <p>Please enter valid name</p>
-                </ion-item>
-                 
-                <ion-item>
-                    <ion-input  formControlName="contactNo" [(ngModel)]="contactNo" type="number" placeholder="Cell Number"></ion-input>
-                </ion-item>
-      
-                <ion-item *ngIf="client.controls.contactNo.invalid && client.controls.contactNo.dirty">
-                    <p>Please enter valid contact number</p>
-                </ion-item>
-      
-                <ion-item>
-                    <ion-input formControlName="email" [(ngModel)]="email" type="email" placeholder="Email"></ion-input>
-                </ion-item>
-      
-                <ion-item *ngIf="client.controls.email.invalid && client.controls.email.dirty">
-                    <p>Please enter valid email address</p>
-                </ion-item>
-      
-                  <ion-item>
-                      <ion-input formControlName="password" [(ngModel)]="password" type="password" placeholder="Password"></ion-input>
-                  </ion-item>
-      
-                  <ion-item *ngIf="client.controls.password.invalid && client.controls.password.dirty">
-                      <p>Your password is too short</p>
-                  </ion-item>
-      
-                  <button ion-button round outline color="primary" (click)=" signupClient()">SignUP</button>OR
-                  <button ion-button round outline color="primary" (click)="submit()">Login</button>
-        
-              </ion-list>
-            </ion-card-content>
-        
-          </ion-card>
-        </div>
-      
-        <div *ngIf ="display == 1" >
-            <div class="form-error">{{loginError}}</div>
-            <ion-card >
-                <ion-card-header>Login
-            </ion-card-header>
-      
-            <ion-card-content >
-                  <ion-list no-line>
-                    
-                    <ion-item >
-                        <ion-input formControlName="email" type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
-                  </ion-item>
-      
-                  <ion-item *ngIf="client.controls.email.invalid && client.controls.email.dirty">
-                      <p>Please enter valid email address</p>
-                  </ion-item>
-                
-                      <ion-item>
-                          <ion-input formControlName="password" [(ngModel)]="password" type="password" placeholder="Password"></ion-input>
-                      </ion-item>
-                    
-                      <ion-item *ngIf="client.controls.password.invalid && client.controls.password.dirty">
-                          <p>Your password is too short</p>
-                      </ion-item>
-      
-                      <button ion-button round outline color="light" (click)="login()" >Login</button>
-                      
-                            <button ion-button round outline color="light" (click)="loginWithGoogle()" >Login with Google&nbsp; <ion-icon ios="logo-google" md="logo-google"></ion-icon></button>
-                      
-                         
-                       
-      
-                  </ion-list>
-                </ion-card-content>
-            
-              </ion-card>
-      
-        </div>
-      </form>
+        <ion-header>
+                <ion-toolbar>
+                  <ion-segment [(ngModel)]="icons" color="secondary">
+                   
+                  </ion-segment>
+                </ion-toolbar>
+              </ion-header>
+              
+              <ion-content>
+                <!-- Segment in content -->
+                <ion-segment [(ngModel)]="relationship" color="primary" (ionChange)="segmentChanged($event)">
+                  <ion-segment-button value="flats">
+                    Flats
+                  </ion-segment-button>
+                  <ion-segment-button value="profile">
+                    Profile
+                  </ion-segment-button>
+                  <ion-segment-button value="bookings">
+                        Bookings
+                      </ion-segment-button>
+                </ion-segment>
+
+                <div *ngIf = "display == flats"  >
+
+                </div>
+              
 
 
 </ion-content>

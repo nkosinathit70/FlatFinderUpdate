@@ -19,7 +19,7 @@
 <ion-content class="content">
     <!--<form  [formGroup]="login" (ngSignUp)="logins()">-->
         
-
+        <form  [formGroup]="login" (ngSignUp)="login(login)">
 
         <ion-card >
             <ion-card-header>Login 
@@ -27,9 +27,9 @@
             <ion-card-content>
               <ion-list no-line>
                 
-            <!--  <ion-item>
-            
-                      <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+                  <ion-item>
+                    <ion-label><ion-icon name = "mail">&nbsp;Email</ion-icon></ion-label>
+                      <ion-input formControlName="email" type="email" [(ngModel)] = "email"></ion-input>
             
                     </ion-item>
                   
@@ -38,29 +38,29 @@
                       
                       </ion-item>
                     <ion-item>
-                    
-                        <ion-input formControlName="password"  type="password" placeholder="Password"></ion-input>
+                        <ion-label><ion-icon name = "lock" >&nbsp; Password</ion-icon></ion-label>
+                        <ion-input formControlName="password"  type="password" [(ngModel)] = "password"></ion-input>
                     </ion-item>
                     <ion-item *ngIf="login.controls.password.invalid && login.controls.password.dirty">
                         <p>please enter a valid password</p>
                         
               
-                      </ion-item>-->
-                      <ion-item>
-                          <ion-input type="text" [(ngModel)]="email" placeholder="email"></ion-input>
-                          </ion-item>
-                          <ion-item>
-                                <ion-input type="password" [(ngModel)]="password" placeholder="email"></ion-input>
-                                </ion-item>
-                  <button ion-button round outline color="light" (click)="logins(email,password)" >Login</button>
-                  <button ion-button round outline color="light" (click)="reset()">Reset</button>
+                      </ion-item>
+                
+                  <button ion-button round full  color="light" (click)="logins()">Log in</button>
+                  <button ion-button round full  color= google (click)="loginWithGoogle()" > <ion-icon name="logo-google">&nbsp;&nbsp;LOG IN WITH GOOGLE</ion-icon></button><br>
+                  <a (click)="reset()" style = "color:white">Forgot Password?</a><br>
+                  <a (click) = "showCheckbox()" style = "color:white">Don't have an account?</a>
         
               </ion-list>
             </ion-card-content>
         
           </ion-card>
-          <button ion-button round outline color="light" (click)="loginWithGoogle()" >Login with Google&nbsp; <ion-icon ios="logo-google" md="logo-google"></ion-icon></button>
+          
     
+    
+    
+    </form>  
     
     
 <!--</form>  -->

@@ -1,0 +1,44 @@
+<!--
+  Generated template for the LandlordPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+ 
+
+  </ion-header>
+  
+  
+  <ion-content class="content" style="background-color: #2b2b2b;">
+  
+          <ion-header>
+                  <ion-toolbar>
+                    <ion-segment [(ngModel)]="icons" color="secondary">
+                     
+                    </ion-segment>
+                  </ion-toolbar>
+                </ion-header>
+                
+                <ion-content>
+                  <!-- Segment in content -->
+                  <ion-segment [(ngModel)]="relationship" color="primary" (ionChange)="segmentChanged($event)">
+                    <ion-segment-button value="flats">
+                      Flats
+                    </ion-segment-button>
+                    <ion-segment-button value="profile">
+                      My Flats
+                    </ion-segment-button>
+                    <ion-segment-button value="bookings">
+                      Profile
+                        </ion-segment-button>
+                  </ion-segment>
+  
+                  <div *ngIf = "display == flats"  >
+  
+                  </div>
+                
+  
+  
+  </ion-content>

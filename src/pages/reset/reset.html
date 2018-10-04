@@ -12,34 +12,39 @@
 
 
 <ion-content class ="content">
-    <form >
-  
+  <ion-buttons left>
+    <button navPop ion-button icon-only (click) = "back()">
+      <ion-icon color="light" name="arrow-back"></ion-icon>
+    </button>
+  </ion-buttons>
+<form [formGroup]="reset" (ngSubmit)="onreset()" >
+    
 
-        <ion-card >
-            <ion-card-header>Reset 
-            </ion-card-header>
-            <ion-card-content>
-              <ion-list no-line>
-                
-                  <ion-item>
+    <ion-card >
+        <ion-card-header>Reset Password
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list no-line>
             
-                      <ion-input  type="email"  placeholder="Username/Email"></ion-input>
-            
-                    </ion-item>
-                  
-                  <ion-item >
-                      <p>Please enter Email</p>
-                      </ion-item>
-                  
+              <ion-item>
+                  <ion-label><ion-icon name = "mail"></ion-icon></ion-label>
+                  <ion-input formControlName="email"  type="email" placeholder="Email"></ion-input>
         
-              </ion-list>
-            </ion-card-content>
-        
-          </ion-card>
+                </ion-item>
+              
+              <ion-item >
+                  <p>Please enter email address</p>
+                  </ion-item>
+              
     
-          <button  ion-button  round outline color="light"  (click)="onreset()">Reset Password</button>
+          </ion-list>
+        </ion-card-content>
     
-    </form> 
+      </ion-card>
+
+      <button  ion-button  round outline color="light" [disabled] = "!reset.valid">Reset</button>
+
+</form> 
 
 
 

@@ -21,7 +21,10 @@ export class ResetPage {
     email:"",
   }
 
+  isenabled:boolean=false;
+
   constructor(public navCtrl: NavController,private fb:FormBuilder, public navParams: NavParams) {
+   
     this.reset=this.fb.group({
       email:['',[Validators.required]]
     }) 
@@ -31,6 +34,7 @@ export class ResetPage {
     console.log('ionViewDidLoad ResetPage');
   }
   onreset(){
+   
     var auth = firebase.auth();
     var emailAddress = this.email;
     
@@ -42,4 +46,7 @@ export class ResetPage {
     });
   }
 
+  back(){
+    this.navCtrl.setRoot("LoginPage");
+  }
 }

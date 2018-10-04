@@ -1,3 +1,4 @@
+import { FormBuilder, Validators } from '@angular/forms';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { BrowserModule } from '@angular/platform-browser';
