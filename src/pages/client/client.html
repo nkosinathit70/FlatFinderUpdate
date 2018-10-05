@@ -8,37 +8,97 @@
 
  
 
-</ion-header>
-
-
-<ion-content class="content" style="background-color: #2b2b2b;">
-
-        <ion-header>
-                <ion-toolbar>
-                  <ion-segment [(ngModel)]="icons" color="secondary">
+  </ion-header>
+  
+  
+  
+  
+  <ion-content padding class="content" >
+  
+  
+    <ion-header>
+        
+            <ion-toolbar>
+              <ion-segment [(ngModel)]="icons" color="secondary">
+               
+              </ion-segment>
+  
+            </ion-toolbar>
+  
+        
+            <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
+              <ion-segment-button value="flats">
+                Flats
+              </ion-segment-button>
+              <ion-segment-button value="profile">
+                Profile
+              </ion-segment-button>
+              <ion-segment-button value="bookings">
+                Bookings
+              </ion-segment-button>
+            </ion-segment>
+        
+    </ion-header>
+  
+    <ion-slides #mySlider (ionSlideDidChange)="onSlideChanged($event)">
+        <ion-slide *ngFor="let slide of slides">
+          <div class="slideNo" *ngIf = "slideNo == 1">
+              <ion-list class = "seg">
+      
+                  <ion-item class="list" *ngFor = "let flat of flatList" (click)="getFlatDetails(flat)">
+                    <ion-avatar item-start>
+                        <img src="{{flat?.downloadUrl}}" height="100" width="100"/>
+                    </ion-avatar>
+                    <h2>{{flat?.fname}}</h2>
+                    <h3>{{flat?.Price}}</h3>
+                    <p>{{flat?.Address}}</p>
                    
+               
+                    <button ion-button clear item-end (click)="getFlatDetails(flat)">View</button>
+                  </ion-item>
+                </ion-list>
+          </div>
+          <div *ngIf = "slideNo == 2">
+              <h1>Slide Twee</h1>
+          </div>
+          <div *ngIf = "slideNo == 3">
+              <h1>Slide Drie</h1>
+          </div>
+          
+        </ion-slide>
+      </ion-slides>
+  
+  
+  
+  
+  
+         <!--!> <ion-header>
+                  <ion-toolbar>
+                    <ion-segment [(ngModel)]="icons" color="secondary">
+                     
+                    </ion-segment>
+  
+                  </ion-toolbar>
+  
+                  <ion-segment [(ngModel)]="relationship" color="primary" (ionChange)="segmentChanged($event)">
+                    <ion-segment-button value="flats">
+  
+                           Flats
+                </ion-segment-button>
+                    <ion-segment-button value="profile">
+                          Profile
+                    </ion-segment-button>
+                    <ion-segment-button value="bookings">
+                          Bookings
+                        </ion-segment-button>
                   </ion-segment>
-                </ion-toolbar>
-              </ion-header>
-              
-              <ion-content>
-                <!-- Segment in content -->
-                <ion-segment [(ngModel)]="relationship" color="primary" (ionChange)="segmentChanged($event)">
-                  <ion-segment-button value="flats">
-                    Flats
-                  </ion-segment-button>
-                  <ion-segment-button value="profile">
-                    Profile
-                  </ion-segment-button>
-                  <ion-segment-button value="bookings">
-                        Bookings
-                      </ion-segment-button>
-                </ion-segment>
-
-                <div *ngIf = "display == flats"  >
-
-                </div>
-              
-
-
-</ion-content>
+                </ion-header>
+                
+                      Segment in content -->
+                  
+  
+                
+  
+  
+  </ion-content>
+  

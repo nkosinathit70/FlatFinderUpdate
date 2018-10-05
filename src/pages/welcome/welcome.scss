@@ -25,10 +25,11 @@ ion-content {
 .ion-toolbar 
 {
     color: aqua;
-.head{
+// .head{
 
-    background-color: black!important;  
-}}
+//     background-color: black!important;  
+// }}
+}
 
 ///@at-root
 
@@ -39,7 +40,11 @@ ion-content {
       text-align: center;
       
       margin-block-end: 5%;
-      background-color:black; 
+     
+        background-color:white; /* For browsers that do not support gradients */
+            background-image: linear-gradient( rgba(165, 42, 42, 0.5),#f5deb3 ); /* Standard syntax (must be last) */
+    
+    
     }
     img {
         border-radius: 5%;

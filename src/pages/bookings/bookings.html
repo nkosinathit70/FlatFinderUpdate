@@ -16,123 +16,16 @@
   
   
   <ion-content class="content">
-        <!-- <ion-list>
-                <ion-item>
-                  <ion-label floating>First Name</ion-label>
-                  <ion-input type="text" [(ngModel)]="fname"></ion-input>
-                </ion-item>
-             
-                <ion-item>
-                  <ion-label floating>Last Name</ion-label>
-                  <ion-input type="text" [(ngModel)]="lname"></ion-input>
-                </ion-item>
-             
-             
-                <ion-item>
-                  <ion-label floating>Cell number</ion-label>
-                  <ion-input type="number" [(ngModel)]="contactNo"></ion-input>
-                </ion-item>
-              </ion-list>
-             
-             
-              <ion-item>
-                <ion-label floating>Email</ion-label>
-                <ion-input type="text" [(ngModel)]="email"></ion-input>
-              </ion-item>
-             
-              <ion-item>
-                <ion-label floating>Booking Date</ion-label>
-                <ion-input type="date" [(ngModel)]="bookingDate"></ion-input>
-              </ion-item>
-             
-              <ion-item>
-                <ion-label floating>Time</ion-label>
-                <ion-input type="time" [(ngModel)]="time"></ion-input>
-              </ion-item>
-            
-              <button ion-button block (click)="writeBooking(fname,lname,contactNo,email,bookingDate,time)">
-                Book
-              </button>
-              <p *ngFor="let booking of bookings">
-                The person's booking is as follows  <br>First Name:  {{ booking?.fname }}<br> Last Name:  {{booking?.lname }}<br>Cell Number: {{booking?.contactNo }}<br>Email:  {{booking?.email }}<br>Booking Date: {{booking?.bookingDate }}<br>Time: {{booking?.time}}
-              </p>
-            
-              <button ion-button block color="danger" (click) = "removeBookings(booking)">
-                <ion-icon name="trash"></ion-icon>
-                Cancel
-              </button> -->
-             
-
-              <ion-card >
-                    <ion-card-header>Booking
-                    </ion-card-header>
-                    <ion-card-content>
-                      <ion-list no-line>
-                        
-                          <ion-item>
-                    
-                              
-                              <ion-input type="text" [(ngModel)]="fname" placeholder="First Name"></ion-input>
-                    
-                            </ion-item>
-                           
-                          
-                          
-                            <ion-item>
-                                    <ion-input type="text" [(ngModel)]="lname"  placeholder="Last Name"></ion-input>
-                                   
-                            </ion-item>
-                            <ion-item>
-                    
-                              
-                              <ion-input type="text" [(ngModel)]="fname" placeholder="First Name"></ion-input>
-                    
-                            </ion-item>
-                            <ion-item>
-                    
-                              
-                              <ion-input type="text" [(ngModel)]="fname" placeholder="First Name"></ion-input>
-                    
-                            </ion-item>
-                            <ion-item>
-                                    <ion-input type="date" [(ngModel)]="bookingDate"  placeholder="Date"></ion-input>
-
-                            </ion-item>
-                            <ion-item>
-                                    <ion-input type="number" [(ngModel)]="contactNo" placeholder="contact Number"></ion-input>
-
-                            </ion-item>
-                            <ion-item>
-                                    <ion-input type="email" [(ngModel)]="email" placeholder="Email Address"></ion-input>
-
-                            </ion-item>
-                            <ion-item>
-                                    <ion-input type="time" [(ngModel)]="time"  placeholder="Time"></ion-input>
-
-                            </ion-item>
-         
-                            
-                        
-                            <button ion-button block (click)="writeBooking(fname,lname,contactNo,email,bookingDate,time)">
-                                    Book
-                                  </button>
-                                  <p *ngFor="let booking of bookings">
-                                    The person's booking is as follows  <br>First Name:  {{ booking?.fname }}<br> Last Name:  {{booking?.lname }}<br>Cell Number: {{booking?.contactNo }}<br>Email:  {{booking?.email }}<br>Booking Date: {{booking?.bookingDate }}<br>Time: {{booking?.time}}
-                                  </p>
-                                
-                                  <button ion-button block color="danger" (click) = "removeBookings(booking)">
-                                    <ion-icon name="trash"></ion-icon>
-                                    Cancel</button>
-                
-                      </ion-list>
-                    </ion-card-content>
-                
-                  </ion-card>
-            
-            
-            
-            
-  
-  
-  </ion-content>
-  
+          <ion-list>
+          <ion-item>
+            <ion-label >Booking Info</ion-label>
+            <ion-input type="date" [(ngModel)]="bookingDate" value="{{value}}"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label floating>Booking Info</ion-label>
+            <ion-input type="time" [(ngModel)]="time" value="{{value}}"></ion-input>
+          </ion-item>
+      </ion-list>
+      <button ion-button full (click)="update(bookingDate,time)">Update</button>
+      </ion-content>

@@ -11,7 +11,7 @@
   </ion-header>
   
   
-  <ion-content padding>
+  <ion-content class="content">
       <ion-list>
           <ion-item>
             <ion-label floating>First Name</ion-label>
@@ -53,6 +53,28 @@
         <p *ngFor="let booking of bookings">
           The person's booking is as follows  <br>First Name: {{ booking?.fname }}<br> Last Name: {{booking?.lname }}<br>Cell Number: {{booking?.contactNo }}<br>Email: {{booking?.email }}<br>Booking Date: {{booking?.bookingDate }}<br>Time: {{time}}
         </p>
+        <ion-card *ngIf="card">
+            <ion-card-content>
+          <ion-list>
+
+            <ion-item>
+              <ion-input type="date" [(ngModel)]="bookingDate"  placeholder="Date"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="time" [(ngModel)]="time"  placeholder="Time"></ion-input>
+
+        </ion-item>
+        <button ion-button block (click)="writeBooking()">
+            Book
+          </button>
+          
+        
+          <button ion-button block color="danger" (click) = "removeBookings(booking)">
+            <ion-icon name="trash"></ion-icon>
+            Cancel</button>
+          </ion-list>
+          </ion-card-content>
+          </ion-card>
   
   </ion-content>
   

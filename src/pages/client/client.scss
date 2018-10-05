@@ -1,16 +1,30 @@
-.content{
-    background: #2b2b2b;
-
-}
-
-
 page-client {
 
+
+.content{
    
-
-
-
+    background-color:white; /* For browsers that do not support gradients */
+        background-image: linear-gradient( rgba(165, 42, 42, 0.5),#f5deb3 ); /* Standard syntax (must be last) */
+        .slideNo{
+      
+            
+                background-color: burlywood;
+            
+        }
+        
+    }
 
 
 
 }
+
+.seg{
+    background: red;
+}
+
+
+
+
+
+
+

@@ -14,6 +14,7 @@ declare var firebase;
   templateUrl: 'book-to-review.html',
 })
 export class BookToReviewPage {
+  flat:any;
   userId;
   fname;
   lname;
@@ -21,7 +22,17 @@ export class BookToReviewPage {
   email;
   bookingDate;
   time;
-  
+  bookingInfo :Person = {
+    
+    tenantID:"",
+    fname:"",
+    lname:"",
+    contactNo:0,
+    email:"",
+    date:"",
+    time:"",
+    landID:""
+  }
   bookings=[];
   cuisine={
     userID:'',
@@ -50,19 +61,33 @@ export class BookToReviewPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad BookToReviewPage');
   }
-  writeBooking(){
-    console.log(this.fname,this.lname,this.contactNo,this.email,this.bookingDate);
-    this.cuisine.fname =this.fname;
-    this.cuisine.lname =this.lname;
-    this.cuisine.contactNo=this.contactNo;
-    this.cuisine.email=this.email;
-    this.cuisine.bookingDate=this.bookingDate;
-    this.cuisine.time=this.time;
-    var database = firebase.database();
-    database.ref('/cuisine').push(this.cuisine);
-    }
-    Cancel(){
-      this.navCtrl.push("CancelPage")
-    }
 
+  writeBooking(){
+    //console.log(this.fname,this.lname,this.contactNo,this.email,this.bookingDate,this.time);
+  if(this.userId){
+    this.bookingInfo.tenantID = this.userId;
+    this.bookingInfo.fname =this.fname;
+    this.bookingInfo.lname =this.lname;
+    this.bookingInfo.contactNo=this.contactNo;
+    this.bookingInfo.email=this.email;
+    this.bookingInfo.date=this.bookingDate;
+    this.bookingInfo.time=this.time;
+    this.bookingInfo.landID= this.flat.landID;
+   // this.bookingList.push(this.bookingInfo);
+    var database = firebase.database();
+    database.ref('/bookingInfo').push(this.bookingInfo);
+  }else{
+    this.navCtrl.push("ClientPage");
+
+  }
+  
+  }
+  
+  removeBookings(booking){
+    var database = firebase.database();
+    database.ref('/bookingInfo/').remove();
+    
+  
+
+}
 }

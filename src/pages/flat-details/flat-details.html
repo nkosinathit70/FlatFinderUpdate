@@ -11,7 +11,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="content">
       <div class="image">
         <img src="{{flat?.downloadUrl}}">
       </div>
@@ -29,28 +29,24 @@
               
           </ion-row></ion-item>
           </ion-list>
-          <button *ngIf="hideButn" ion-button  round outline color style = "color: #69F0AE " (click)="checkStatus()" full>book</button>
-          <ion-card *ngIf="card">
-            <ion-card-content>
+          <button  ion-button  round outline color style = "color: #69F0AE " (click)="checkStatus()" full>book</button>
           <ion-list>
 
-            <ion-item>
-              <ion-input type="date" [(ngModel)]="bookingDate"  placeholder="Date"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-input type="time" [(ngModel)]="time"  placeholder="Time"></ion-input>
-
-        </ion-item>
-        <button ion-button block (click)="writeBooking()">
-            Book
-          </button>
+              <ion-item>
+                <ion-input type="date" [(ngModel)]="bookingDate"  placeholder="Date"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input type="time" [(ngModel)]="time"  placeholder="Time"></ion-input>
+  
+          </ion-item>
+          <button ion-button block (click)="writeBooking()">
+              Book
+            </button>
+            
           
-        
-          <button ion-button block color="danger" (click) = "removeBookings(booking)">
-            <ion-icon name="trash"></ion-icon>
-            Cancel</button>
-          </ion-list>
-          </ion-card-content>
-          </ion-card>
+            <button ion-button block color="danger" (click) = "removeBookings(booking)">
+              <ion-icon name="trash"></ion-icon>
+              Cancel</button>
+            </ion-list>
           
 </ion-content>

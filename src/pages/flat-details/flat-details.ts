@@ -86,7 +86,7 @@ export class FlatDetailsPage {
       this.hideButn = 0;
      }
      else{
-    this.navCtrl.push("ClientPage");
+    this.navCtrl.push("BookingsPage");
 
      }
   }
@@ -111,7 +111,7 @@ export class FlatDetailsPage {
     var database = firebase.database();
     database.ref('/bookingInfo').push(this.bookingInfo);
   }else{
-    this.navCtrl.push("ClientPage");
+    this.navCtrl.push("BookingsPage");
 
   }
   

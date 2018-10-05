@@ -1,6 +1,9 @@
 page-book-to-review {
 
-    
+    .content{
+        background-color:white; /* For browsers that do not support gradients */
+            background-image: linear-gradient( rgba(165, 42, 42, 0.5),#f5deb3 ); /* Standard syntax (must be last) */
+    }
         .background{
             background-image: url(../../assets/imgs/52392_1478584515.jpeg)
         }

@@ -18,10 +18,6 @@ declare var firebase;
 export class BookingsPage {
   userId;
   doBookings: FormGroup;
-  fname;
-  lname;
-  contactNo;
-  email;
   bookingDate;
   time;
   flat;
@@ -30,10 +26,6 @@ export class BookingsPage {
   bookingInfo={
     userID:'',
   key:'',
-   fname:'',
-   lname:'',
-   contactNo:'',
-   email:'',
    bookingDate:'',
    time:''
   }
@@ -44,12 +36,9 @@ export class BookingsPage {
     }
     console.log("boooking user ID =",this.userId);
     this.doBookings=this.fb.group({
-      fname:['',[Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.maxLength(20)]],
-      lname:['',[Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.maxLength(20)]],
-      contactNo:['',[Validators.required,Validators.pattern('[a-zA-Z]*'),Validators.maxLength(20)]],
-      email:['',[Validators.required,Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'),Validators.maxLength(25)]],
-      // bookingDate:[Validators.required,Validators.maxLength(10)],
-      // time:['',[Validators.required,Validators.maxLength(10)]],
+     
+     bookingDate:[Validators.required],
+     time:['',[Validators.required]],
     })
   }
 
@@ -65,9 +54,8 @@ export class BookingsPage {
    console.log(snap.val());
 
     // this.bookings.push(snap.val());
-    console.log(snap.val().fname + ' key ' + snap.key)
-      this.bookings.push({fname:snap.val().fname, key:snap.key,lname:snap.val().lname,contactNo:snap.val().contactNo,email:snap.val().email,
-      bookingDate:snap.val().bookingDate,time:snap.val().time});
+    console.log(snap.val().bookingDate + ' key ' + snap.key)
+      this.bookings.push({bookingDate:snap.val().bookingDate, key:snap.key,time:snap.val().time});
 
 
 
@@ -77,12 +65,8 @@ export class BookingsPage {
   });
 }
 writeBooking(){
-  console.log(this.fname,this.lname,this.contactNo,this.email,this.bookingDate,this.time);
+  console.log(this.bookingDate,this.time);
   this.bookingInfo.userID = this.userId;
-  this.bookingInfo.fname =this.fname;
-  this.bookingInfo.lname =this.lname;
-  this.bookingInfo.contactNo=this.contactNo;
-  this.bookingInfo.email=this.email;
   this.bookingInfo.bookingDate=this.bookingDate;
   this.bookingInfo.time=this.time;
   var database = firebase.database();
@@ -100,6 +84,9 @@ removeBookings(booking){
 
 
 }
+update(booking){
+  this.navCtrl.push("UpdatePage",{booking:booking});
+}  
 ViewPage(){
   this.navCtrl.push("WelcomePage");
 }
