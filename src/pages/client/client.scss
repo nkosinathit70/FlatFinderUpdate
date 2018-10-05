@@ -5,25 +5,42 @@ page-client {
    
     background-color:white; /* For browsers that do not support gradients */
         background-image: linear-gradient( rgba(165, 42, 42, 0.5),#f5deb3 ); /* Standard syntax (must be last) */
-        .slideNo{
-      
-            
-                background-color: burlywood;
-            
-        }
+         
         
     }
 
 
+    .tutorial-page {
+        height: 100%;
+    
+        .toolbar-background {
+          background:#f5deb3;
+          background-image: linear-gradient( rgba(165, 42, 42, 0.5),#f5deb3 ); 
+          border-color: transparent;
+          
+
+        }
+        ion-item{
+            width: 100%;
+            padding: 5%;
+        
+
+            background-image: linear-gradient( rgba(238, 221, 221, 0.5),#f5deb3 ); 
+        }
+        .slide-zoom {
+          height: 100%;
+          margin-top: 30%;
+         
+        }
+      
+        
+      
+      }
+    
+    
+    
 
 }
-
-.seg{
-    background: red;
-}
-
-
-
 
 
 
